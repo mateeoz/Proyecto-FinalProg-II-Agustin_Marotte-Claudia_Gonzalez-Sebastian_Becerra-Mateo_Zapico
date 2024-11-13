@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tienda Online dedicada al rubro de videojuegos. Vendemos videojuegos de diferentes consolas y componentes, como también accesorios de tecnología.">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <script src="https://kit.fontawesome.com/4e9d3e4f0a.js" crossorigin="anonymous"></script>
+   <link rel="shortcut icon" href="static/img/logosinfondo.jpg" type="image/x-icon">
+  <title>WOW GAMES</title>
+</head>
+<body>
+
+  <!-- Menu Superior -->
+  <nav class="menu-carrito">
+    <div class="contenedor-logo">
+      <img src="static/img/logosinfondopng.png" alt="Logo de Wow Games">
+    </div>
+    
+    <div class="divdearriba">
+      <button id="boton-carrito" class="contenedor-icon carrito-btn" aria-label="menu carrito">
+        <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+        <h4 aria-live="assertive">Carrito (<span class="carrito-cantidad-productos">0</span> items)</h4>
+      </button>
+      
+      <form action="{{ url_for('logout') }}" method="post">
+        <button class="contenedor-icon carrito-btn" type="submit">Cerrar Sesión</button>
+      </form>
+  
+    </div>
+  
+  </nav>
+  
+  <!-- Header -->
+  <header class="contenedor-banner-principal">
+    <span role="src=img/portada.videjuegos.jpg" aria-label="videojuegos"></span>
+  </header>
+
+
+  
+
+  <!-- Sección principal -->
+  <section class="seccion-principal">
+    <div class="overlay filtro-overlay ocultar"></div>
+    <aside class="contenedor-filtros-productos" aria-labelledby="formulario-filtro">
+      
+      <form id="formulario-filtro" class="formulario-filtro">
+        <button id="boton-cerrar-filtros" class="contenedor-icon ocultar" aria-label="Cerrar filtros" type="button">
+          <i class="fas fa-times" aria-hidden="true"></i>
+        </button>
+        <div class="contenedor-titulo-aside">
+          <h2 class="titulo-aside">FILTROS</h2>
+          <button id="boton-limpiar-filtros" type="button" class="contenedor-icon" aria-label="limpiar filtros">
+            <i class="fas fa-trash-alt" aria-hidden="true"></i>
+            Limpiar
+          </button>
+        </div>
+  
+        <fieldset class="contenedor-info-form busqueda">
+          <legend class="titulos-filtros">BÚSQUEDA</legend>
+          <label for="busqueda-por-nombre">
+            <input type="text" placeholder="Buscar productos" name="busqueda" id="busqueda-por-nombre"/>
+            <div class="contenedor-lupa">
+              <i class="fas fa-search" aria-hidden="true"></i>
+            </div>
+          </label>
+        </fieldset>
+
+        <fieldset class="contenedor-info-form categoria">
+          <legend class="titulos-filtros">CATEGORIA</legend>
+            <label class="checkbox" for="categoria-bicicletas">
+              <input type="checkbox" name="categoria" value="videojuegos" id="categoria-videojuegos" /> 
+              VIDEOJUEGOS
+            </label>
+            <label class="checkbox" for="categoria-componentes">
+              <input type="checkbox" name="categoria" value="componentes" id="categoria-componentes" /> 
+              COMPONENTES
+            </label>
+            <label class="checkbox" for="categoria-indumentaria">
+              <input type="checkbox" name="categoria" value="indumentaria" id="categoria-indumentaria" /> 
+              INDUMENTARIA
+            </label>
+            <label class="checkbox" for="categoria-merch">
+              <input type="checkbox" name="categoria" value="merch" id="categoria-merch" /> 
+              MERCH
+            </label>
+            <label class="checkbox" for="categoria-accesorios">
+              <input type="checkbox" name="categoria" value="accesorios" id="categoria-accesorios" /> 
+              ACCESORIOS
+            </label>
+        </fieldset>
+
+        <fieldset class="contenedor-info-form puntaje">
+          <legend class="titulos-filtros">PUNTAJE</legend>
+          <label class="checkbox" for="puntaje-5">
+            <input type="checkbox" name="puntaje" value="5" id="puntaje-5" />
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true"></i> 
+            <p aria-hidden="true">(5)</p>
+            <span class="visually-hidden">5 de 5 estrellas</span>
+          </label>
+          <label class="checkbox" for="puntaje-4">
+            <input type="checkbox" name="puntaje" value="4" id="puntaje-4" />
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="far fa-star" aria-hidden="true"></i>
+            <p aria-hidden="true">(4)</p>
+            <span class="visually-hidden">4 de 5 estrellas</span>
+          </label>
+          <label class="checkbox" for="puntaje-3">
+            <input type="checkbox" name="puntaje" value="3" id="puntaje-3" />
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="far fa-star" aria-hidden="true"></i>
+            <i class="far fa-star" aria-hidden="true"></i>
+            <p aria-hidden="true">(3)</p>
+            <span class="visually-hidden">3 de 5 estrellas</span>
+          </label>
+          <label class="checkbox" for="puntaje-2">
+            <input type="checkbox" name="puntaje" value="2" id="puntaje-2" />
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="far fa-star" aria-hidden="true"></i>
+            <i class="far fa-star" aria-hidden="true"></i>
+            <i class="far fa-star" aria-hidden="true"></i>
+            <p aria-hidden="true">(2)</p>
+            <span class="visually-hidden">2 de 5 estrellas</span>
+          </label>
+          <label class="checkbox" for="puntaje-1">
+            <input type="checkbox" name="puntaje" value="1" id="puntaje-1" />
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="far fa-star" aria-hidden="true"></i>
+            <i class="far fa-star" aria-hidden="true"></i>
+            <i class="far fa-star" aria-hidden="true"></i>
+            <i class="far fa-star" aria-hidden="true"></i>
+            <p aria-hidden="true">(1)</p>
+            <span class="visually-hidden">1 de 5 estrellas</span>
+          </label>          
+        </fieldset>
+      </form>
+    
+    </aside>
+
+    <main class="productos-seccion-principal">
+      <aside class="contenedor-informacion-navegacion">
+        <div class="contador-productos">
+          <p aria-live="assertive">Mostrando <span id="cantidad-productos-visibles">0</span> 
+            producto(s) de <span id="total-de-productos">20</span></p>
+        </div>
+
+        <div class="contenedor-botones-visualizacion-productos">
+          <p>Ver como</p>
+          <button id="boton-grilla" class="contenedor-icon" aria-label="vista grilla">
+            <i class="fas fa-th" aria-hidden="true"></i>
+          </button>
+          <button id="boton-lista" class="contenedor-icon" aria-label="vista lista">
+            <i class="fas fa-list" aria-hidden="true"></i>
+          </button>
+        </div>
+
+        <button id="boton-abrir-filtros" class="contenedor-icon filtro-media" aria-label="filtros">
+          <i class="fas fa-filter" aria-hidden="true"></i>
+          Filtros
+        </button>
+      </aside>
+
+      <section class="contenedor-tarjetas-productos vista-grilla-contenedor">
+
+        <article class="tarjeta-producto vista-grilla-tarjeta" 
+        data-nombre="mafia iii"
+        data-precio="41000" 
+        data-categoria="videojuegos" 
+        data-puntaje="5">
+          <div class="contenedor-imagen">
+            <img src="static/img/mafia III.jpg" alt="MAFIA III">
+          </div>
+          <div class="informacion-producto">
+            <h2>MAFIA III</h2>
+            <p class="precio-producto">$41.000</p>
+            <p class="descripcion-producto ocultar">Corre el año 1968 y, tras años combatiendo en Vietnam, Lincoln Clay ha llegado a esta conclusión: la familia no son aquellos con los que has nacido, sino aquellos por los que estás dispuesto a morir. De vuelta a casa, en New Bordeaux, Lincoln se propone escapar de un pasado criminal. Pero cuando su familia adoptiva, la mafia negra, es traicionada y aniquilada por los mafiosos italianos, Lincoln levanta una nueva familia sobre las cenizas de la anterior y emprende un camino de venganza y redención para acabar con el responsable. Serán precisos intensos tiroteos, despiadadas luchas a puñetazos, conducción temeraria y sabiduría callejera. Pero con el equipo adecuado, la fortaleza necesaria para tomar decisiones duras y la voluntad de ensuciarse las manos, es posible llegar a lo más alto de los bajos fondos.</p>
+
+            <div class="puntaje-producto" aria-label="puntaje del producto">
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <p aria-hidden="true">(5)</p>
+              <span class="visually-hidden">5 de 5 estrellas</span>
+            </div>
+
+            <button data-id="1" class="comprar-producto"  aria-label="Comprar producto">
+              COMPRAR
+            </button>
+          </div>
+        </article>
+
+        <article class="tarjeta-producto vista-grilla-tarjeta" 
+        data-nombre="fc 25"
+        data-precio="130000" 
+        data-categoria="videojuegos" 
+        data-puntaje="3">
+          <div class="contenedor-imagen">
+            <img src="static/img/fifa 2025.jpg" alt="FC 25">
+          </div>
+          <div class="informacion-producto">
+            <h2>FC 25</h2>
+            <p class="precio-producto">$130.000</p>
+            <p class="descripcion-producto ocultar">EA Sports FC 25 continúa el legado del muy exitoso simulador de fútbol con un videojuego donde no faltarán los y las mejores futbolistas de los clubes y competiciones más importantes de todo el mundo. En un nuevo salto adelante, esta producción llega con novedades en sus diferentes apartados, invitando a forma equipo en Rush de 5c5, una nueva forma de jugar con colegas en los modos Football Ultimate Team, pero también a disfrutar de un modo Carrera de futbolista y Carrera de mánager revisado para la ocasión.?</p>
+
+            <div class="puntaje-producto" aria-label="puntaje del producto">
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="far fa-star" aria-hidden="true"></i>
+              <i class="far fa-star" aria-hidden="true"></i>
+              <p aria-hidden="true">(3)</p>
+              <span class="visually-hidden">3 de 5 estrellas</span>
+            </div>
+
+            <button data-id="2" class="comprar-producto"  aria-label="Comprar producto">
+              COMPRAR
+            </button>
+          </div>
+        </article>
+
+        <article class="tarjeta-producto vista-grilla-tarjeta" 
+        data-nombre="lego the incredibles "
+        data-precio="71000" 
+        data-categoria="videojuegos" 
+        data-puntaje="2">
+          <div class="contenedor-imagen">
+            <img src="static/img/lego the incredibles.jpg" alt="lego the increibles">
+          </div>
+          <div class="informacion-producto">
+            <h2>LEGO THE INCREDIBLE</h2>
+            <p class="precio-producto">$71.000</p>
+            <p class="descripcion-producto ocultar">LVive las apasionantes aventuras de la familia Parr mientras compaginan la lucha contra el crimen y su vida familiar, todo ello inspirado en las dos películas de Disney Pixar, Los Increíbles y Los Increíbles 2, en un mundo lego lleno de diversión y humor. En legoLos Increíbles, los jugadores podrán explorar niveles llenos de acción y un épico mundo nexo , en el que usarán sus «super» habilidades únicas para llevar a los supervillanos de la ciudad ante la justicia. ¡Los jugadores también podrán unir sus fuerzas con familiares y amigos y construir increíbles estructuras de legoen un modo cooperativo para 2 jugadores!</p>
+
+            <div class="puntaje-producto" aria-label="puntaje del producto">
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="far fa-star" aria-hidden="true"></i>
+              <i class="far fa-star" aria-hidden="true"></i>
+              <i class="far fa-star" aria-hidden="true"></i>
+              <p aria-hidden="true">(2)</p>
+              <span class="visually-hidden">2 de 5 estrellas</span>
+            </div>
+
+            <button data-id="3" class="comprar-producto"  aria-label="Comprar producto">
+              COMPRAR
+            </button>
+          </div>
+        </article>
+
+        <article class="tarjeta-producto vista-grilla-tarjeta" 
+        data-nombre="mortal combat 11 - ultimate"
+        data-precio="49000" 
+        data-categoria="videojuegos" 
+        data-puntaje="3">
+          <div class="contenedor-imagen">
+            <img src="static/img/mortal kombat.jpg" alt="Mortal Combate 11 - Ultimate">
+          </div>
+          <div class="informacion-producto">
+            <h2>MORTAL COMBAT</h2>
+            <p class="precio-producto">$49.000</p>
+            <p class="descripcion-producto ocultar">NetheRealm Studios da vida a Mortal Kombat 11, un nuevo capítulo de esta veterana serie de videojuegos de lucha que llega con las mayores opciones de personalización vistas en la serie hasta la fecha. El nuevo motor gráfico usado en este Mortal Kombat XI permite mostrar peleas más espectaculares, con un nuevo sistema de cámaras que muestra al detalle los momentos más emocionantes de la lucha.</p>
+
+            <div class="puntaje-producto" aria-label="puntaje del producto">
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="far fa-star" aria-hidden="true"></i>
+              <i class="far fa-star" aria-hidden="true"></i>
+              <p aria-hidden="true">(3)</p>
+              <span class="visually-hidden">3 de 5 estrellas</span>
+            </div>
+
+            <button data-id="4" class="comprar-producto"  aria-label="Comprar producto">
+              COMPRAR
+            </button>
+          </div>
+        </article>
+
+        <article class="tarjeta-producto vista-grilla-tarjeta" 
+        data-nombre="nascar heat 4"
+        data-precio="60000" 
+        data-categoria="videojuegos" 
+        data-puntaje="5">
+          <div class="contenedor-imagen">
+            <img src="static/img/nascar heat 4.jpg" alt="Naskar Heat 4">
+          </div>
+          <div class="informacion-producto">
+            <h2>NASCAR HEAT 4</h2>
+            <p class="precio-producto">$60.000</p>
+            <p class="descripcion-producto ocultar">Monster Games continúa con NASCAR Heat 4 su saga de alta velocidad garantizando una entrega donde los usuarios pueden construir su propio equipo de carreras, y competir en el Xtreme Dirt Tour, en un Modo Carrera expandido como novedad. NASCAR Heat 4 anima a los jugadores a demostrar sus dotes de conducción a través de modos de juego online y pantalla dividida. El videojuego además se presente con ocho circuitos totalmente nuevos, mejoras en el comportamiento de la inteligencia artificial y varias configuraciones de automóviles prefabricados para aquellos a los que no les gusten indagar en el garage.</p>
+
+            <div class="puntaje-producto" aria-label="puntaje del producto">
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <p aria-hidden="true">(5)</p>
+              <span class="visually-hidden">5 de 5 estrellas</span>
+            </div>
+
+            <button data-id="5" class="comprar-producto" aria-label="Comprar producto">
+              COMPRAR
+             </button>
+          </div>
+        </article>
+        
+        <article class="tarjeta-producto vista-grilla-tarjeta" 
+        data-nombre="remera valorant"
+        data-precio="20000" 
+        data-categoria="indumentaria" 
+        data-puntaje="4">
+          <div class="contenedor-imagen">
+            <img src="static/img/remera valorant.jpg" alt="Remera Valorant">
+          </div>
+          <div class="informacion-producto">
+            <h2>REMERA NEGRA VALORANT</h2>
+            <p class="precio-producto">$20.000</p>
+            <p class="descripcion-producto ocultar">Estilo único de Valorant</p>
+
+            <div class="puntaje-producto" aria-label="puntaje del producto">
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="far fa-star" aria-hidden="true"></i>
+              <p aria-hidden="true">(4)</p>
+              <span class="visually-hidden">4 de 5 estrellas</span>
+            </div>
+
+            <button data-id="6" class="comprar-producto" aria-label="Comprar producto">
+              COMPRAR
+             </button>
+          </div>
+        </article>
+
+        <article class="tarjeta-producto vista-grilla-tarjeta" 
+        data-nombre="mochila de sonic"
+        data-precio="80000" 
+        data-categoria="merch" 
+        data-puntaje="1">
+          <div class="contenedor-imagen">
+            <img src="static/img/merc.sonic.jpg" alt="mochila de sonic">
+          </div>
+          <div class="informacion-producto">
+            <h2>MOCHILA DE SONIC</h2>
+            <p class="precio-producto">$80.000</p>
+            <p class="descripcion-producto ocultar"></p>
+
+            <div class="puntaje-producto" aria-label="puntaje del producto">
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="far fa-star" aria-hidden="true"></i>
+              <i class="far fa-star" aria-hidden="true"></i>
+              <i class="far fa-star" aria-hidden="true"></i>
+              <i class="far fa-star" aria-hidden="true"></i>
+              <p aria-hidden="true">(1)</p>
+              <span class="visually-hidden">1 de 5 estrellas</span>
+            </div>
+
+            <button data-id="7" class="comprar-producto" aria-label="Comprar producto">
+              COMPRAR
+             </button>
+          </div>
+        </article>
+
+        <article class="tarjeta-producto vista-grilla-tarjeta" 
+        data-nombre="need for speed"
+        data-precio="49000" 
+        data-categoria="videojuegos" 
+        data-puntaje="4">
+          <div class="contenedor-imagen">
+            <img src="static/img/need for speed payback.jpg" alt="Need for Speed">
+          </div>
+          <div class="informacion-producto">
+            <h2>NEED FOR SPEED PAYBACK</h2>
+            <p class="precio-producto">$49.000</p>
+            <p class="descripcion-producto ocultar">La serie de conducción Need for Speed vuelve a dominar las carreteras de la velocidad más arcade en 2017 con Need for Speed: Payback, un juego desarrollado por Ghost Games, responsables del producto lanzado en 2015 bajo el escueto nombre de Need for Speed. En esta ocasión, el videojuego recupera algunas de las mejores historias de episodios tan emblemáticos de la serie como Most Wanted, y nos lleva a plantarle cara al hampa en la ciudad de Fortune Valley, lugar donde deberemos ser mejores, más inteligentes y, sobre todo, más veloces que la organización local The House, que controla a criminales, casino e incluso a la policía.</p>
+
+            <div class="puntaje-producto" aria-label="puntaje del producto">
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="far fa-star" aria-hidden="true"></i>
+              <p aria-hidden="true">(4)</p>
+              <span class="visually-hidden">4 de 5 estrellas</span>
+            </div>
+
+            <button data-id="8" class="comprar-producto" aria-label="Comprar producto">
+              COMPRAR
+             </button>
+          </div>
+        </article>
+
+        <article class="tarjeta-producto vista-grilla-tarjeta" 
+        data-nombre="resident evil 4"
+        data-precio="42000" 
+        data-categoria="videojuegos" 
+        data-puntaje="3">
+          <div class="contenedor-imagen">
+            <img src="static/img/resident evil 4.jpg" alt="resident evil 4">
+          </div>
+          <div class="informacion-producto">
+            <h2>RESIDENT EVIL 4</h2>
+            <p class="precio-producto">$42.000</p>
+            <p class="descripcion-producto ocultar">Cuarta entrega de la serie Resident Evil adaptada a consolas de nueva generación y que debuta en marzo de 2016. La historia de Leon S. Kennedy vuelve a la vida en formato HD para contarnos su epopeya para rescatar a Ashley Graham, la hija del presidente, secuestrada por un culto siniestro en España. Una aventura que en su momento supuso una de las mejores mezclas de Survival Horror y acción y que ahora da el salto a PlayStation 4 y Xbox One con gráficos mejorados y la inclusión de todos los contenidos descargables.</p>
+
+            <div class="puntaje-producto" aria-label="puntaje del producto">
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="far fa-star" aria-hidden="true"></i>
+              <i class="far fa-star" aria-hidden="true"></i>
+              <p aria-hidden="true">(3)</p>
+              <span class="visually-hidden">3 de 5 estrellas</span>
+            </div>
+
+            <button data-id="9" class="comprar-producto" aria-label="Comprar producto">
+              COMPRAR
+             </button>
+          </div>
+        </article>
+
+        <article class="tarjeta-producto vista-grilla-tarjeta" 
+        data-nombre="procesador ryzen"
+        data-precio="200000" 
+        data-categoria="componentes" 
+        data-puntaje="2">
+          <div class="contenedor-imagen">
+            <img src="static/img/procesador ryzen.jpg" alt="procesador ryzen">
+          </div>
+          <div class="informacion-producto">
+            <h2>PROCESADOR RYZEN</h2>
+            <p class="precio-producto">$200.000</p>
+            <p class="descripcion-producto ocultar">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi unde aperiam voluptatibus blanditiis qui illo ab sunt, quaerat ut modi assumenda suscipit quam ad totam incidunt doloremque iste at eos?</p>
+
+            <div class="puntaje-producto" aria-label="puntaje del producto">
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="far fa-star" aria-hidden="true"></i>
+              <i class="far fa-star" aria-hidden="true"></i>
+              <i class="far fa-star" aria-hidden="true"></i>
+              <p aria-hidden="true">(2)</p>
+              <span class="visually-hidden">2 de 5 estrellas</span>
+            </div>
+
+            <button data-id="10" class="comprar-producto" aria-label="Comprar producto">
+              COMPRAR
+             </button>
+          </div>
+        </article>
+
+        <article class="tarjeta-producto vista-grilla-tarjeta" 
+        data-nombre="placa de video"
+        data-precio="150000" 
+        data-categoria="componentes" 
+        data-puntaje="1">
+          <div class="contenedor-imagen">
+            <img src="static/img/PLACA VIDEO.jpg" alt="placa de video">
+          </div>
+          <div class="informacion-producto">
+            <h2>PLACA DE VIDEO</h2>
+            <p class="precio-producto">$150.000</p>
+            <p class="descripcion-producto ocultar">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi unde aperiam voluptatibus blanditiis qui illo ab sunt, quaerat ut modi assumenda suscipit quam ad totam incidunt doloremque iste at eos?</p>
+
+            <div class="puntaje-producto" aria-label="puntaje del producto">
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="far fa-star" aria-hidden="true"></i>
+              <i class="far fa-star" aria-hidden="true"></i>
+              <i class="far fa-star" aria-hidden="true"></i>
+              <i class="far fa-star" aria-hidden="true"></i>
+              <p aria-hidden="true">(1)</p>
+              <span class="visually-hidden">1 de 5 estrellas</span>
+            </div>
+
+            <button data-id="11" class="comprar-producto" aria-label="Comprar producto">
+              COMPRAR
+             </button>
+          </div>
+        </article>
+
+        <article class="tarjeta-producto vista-grilla-tarjeta" 
+        data-nombre="remera sonic"
+        data-precio="50000" 
+        data-categoria="indumentaria" 
+        data-puntaje="4">
+          <div class="contenedor-imagen">
+            <img src="static/img/remera sonic.jpg" alt="remera sonic">
+          </div>
+          <div class="informacion-producto">
+            <h2>REMERA SONIC</h2>
+            <p class="precio-producto">$50.000</p>
+            <p class="descripcion-producto ocultar">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi unde aperiam voluptatibus blanditiis qui illo ab sunt, quaerat ut modi assumenda suscipit quam ad totam incidunt doloremque iste at eos?</p>
+
+            <div class="puntaje-producto" aria-label="puntaje del producto">
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="far fa-star" aria-hidden="true"></i>
+              <p aria-hidden="true">(4)</p>
+              <span class="visually-hidden">4 de 5 estrellas</span>
+            </div>
+
+            <button data-id="12" class="comprar-producto" aria-label="Comprar producto">
+              COMPRAR
+             </button>
+          </div>
+        </article>
+
+        <article class="tarjeta-producto vista-grilla-tarjeta" 
+        data-nombre="teclado"
+        data-precio="35000" 
+        data-categoria="accesorios" 
+        data-puntaje="1">
+          <div class="contenedor-imagen">
+            <img src="static/img/TECLADO.jpg" alt="teclado">
+          </div>
+          <div class="informacion-producto">
+            <h2>TECLADO</h2>
+            <p class="precio-producto">$35.000</p>
+            <p class="descripcion-producto ocultar">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi unde aperiam voluptatibus blanditiis qui illo ab sunt, quaerat ut modi assumenda suscipit quam ad totam incidunt doloremque iste at eos?</p>
+
+            <div class="puntaje-producto" aria-label="puntaje del producto">
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="far fa-star" aria-hidden="true"></i>
+              <i class="far fa-star" aria-hidden="true"></i>
+              <i class="far fa-star" aria-hidden="true"></i>
+              <i class="far fa-star" aria-hidden="true"></i>
+              <p aria-hidden="true">(1)</p>
+              <span class="visually-hidden">1 de 5 estrellas</span>
+            </div>
+
+            <button data-id="13" class="comprar-producto" aria-label="Comprar producto">
+              COMPRAR
+             </button>
+          </div>
+        </article>
+
+        <article class="tarjeta-producto vista-grilla-tarjeta" 
+        data-nombre="mouse"
+        data-precio="15.000" 
+        data-categoria="accesorios" 
+        data-puntaje="5">
+          <div class="contenedor-imagen">
+            <img src="static/img/MOUSE.jpg" alt="MOUSE">
+          </div>
+          <div class="informacion-producto">
+            <h2>MOUSE</h2>
+            <p class="precio-producto">$15.000</p>
+            <p class="descripcion-producto ocultar">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi unde aperiam voluptatibus blanditiis qui illo ab sunt, quaerat ut modi assumenda suscipit quam ad totam incidunt doloremque iste at eos?</p>
+
+            <div class="puntaje-producto" aria-label="puntaje del producto">
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <p aria-hidden="true">(5)</p>
+              <span class="visually-hidden">5 de 5 estrellas</span>
+            </div>
+
+            <button data-id="14" class="comprar-producto" aria-label="Comprar producto">
+              COMPRAR
+             </button>
+          </div>
+        </article>
+
+        <article class="tarjeta-producto vista-grilla-tarjeta" 
+        data-nombre="merch mario bross"
+        data-precio="15000" 
+        data-categoria="merch" 
+        data-puntaje="2">
+          <div class="contenedor-imagen">
+            <img src="static/img/MERCH MARIO BROSS.jpg" alt="MERCH MARIO BROSS">
+          </div>
+          <div class="informacion-producto">
+            <h2>MARIO BROSS MERCH</h2>
+            <p class="precio-producto">$15.000</p>
+            <p class="descripcion-producto ocultar">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi unde aperiam voluptatibus blanditiis qui illo ab sunt, quaerat ut modi assumenda suscipit quam ad totam incidunt doloremque iste at eos?</p>
+
+            <div class="puntaje-producto" aria-label="puntaje del producto">
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="far fa-star" aria-hidden="true"></i>
+              <i class="far fa-star" aria-hidden="true"></i>
+              <i class="far fa-star" aria-hidden="true"></i>
+              <p aria-hidden="true">(2)</p>
+              <span class="visually-hidden">2 de 5 estrellas</span>
+            </div>
+
+            <button data-id="15" class="comprar-producto" aria-label="Comprar producto"> 
+              COMPRAR
+             </button>
+          </div>
+        </article>
+
+      </section>
+    </main>
+  </section>
+
+  <footer class="footer">
+    <div class="contenedor-logo-footer">
+      <img src="static/img/logosinfondopng.png" alt="Logo de Wow Games">
+    </div>
+    <p class="saludo">&copy;Derechos reservados a WowGames - Venta de videojuegos</p>
+    
+  </footer>
+
+  <!-- Seccion Checkout Carrito -->
+  <div class="overlay carrito-overlay ocultar"></div>
+  <section class="carrito-checkout" aria-modal="true" role="dialog"
+   aria-label="Carrito de compras" aria-labelledby="carrito-compra">
+    <div class="titular-carrito">
+      <h2 id="carrito-compra">Carrito</h2>
+      <button id="boton-cerrar-carrito" class="contenedor-icon" aria-label="Cerrar carrito">
+        <i class="fas fa-times"></i>
+      </button>            
+    </div>
+
+    <div class="carrito-sin-productos" aria-labelledby="sin-productos">
+      <p id="sin-productos">No tienes productos en el carrito, ¡agrega algunos!</p>
+    </div>
+
+    <div class="detalle-productos-en-carrito ocultar" aria-labelledby="productos-en-carrito">
+      <p id="productos-en-carrito"><span class="carrito-cantidad-productos">0</span> producto(s) agregado(s)</p>
+
+      <div class="listado-de-productos">
+        <article class="producto-a-comprar ocultar" data-id="1">
+          <div class="contenedor-imagen-carrito">
+            <img src="static/img/mafia III.jpg" alt="MAFIA III">
+          </div>
+          <div class="info-producto-carrito">
+            <div class="titular-carrito">
+              <h3>MAFIA III</h3>
+              <button class="eliminar-producto" data-id="1" aria-label="Borrar producto de carrito">
+                <i class="fas fa-trash-alt"></i>
+              </button>            
+            </div>
+            <div class="cantidad-y-precio-producto">
+              <label class="unidades-a-llevar" for="cantidad">
+                <input type="number" name="cantidad" id="cantidad" min="1" value="1" data-precio="41000">
+              </label>
+              <p class="precio-producto-carrito">$41000</p>
+            </div>          
+          </div>
+        </article>
+
+        <article class="producto-a-comprar ocultar" data-id="2">
+          <div class="contenedor-imagen-carrito">
+            <img src="static/img/fifa 2025.jpg" alt="FC 25">
+          </div>
+          <div class="info-producto-carrito">
+            <div class="titular-carrito">
+              <h3>FC 25</h3>
+              <button class="eliminar-producto" data-id="2" aria-label="Borrar producto de carrito">
+                <i class="fas fa-trash-alt"></i>
+              </button>            
+            </div>
+            <div class="cantidad-y-precio-producto">
+              <label class="unidades-a-llevar" for="cantidad">
+                <input type="number" name="cantidad" id="cantidad" min="1" value="1" data-precio="130000">
+              </label>
+              <p class="precio-producto-carrito">$130000</p>
+            </div>          
+          </div>
+        </article>
+
+        <article class="producto-a-comprar ocultar" data-id="3">
+          <div class="contenedor-imagen-carrito">
+            <img src="static/img/lego the incredibles.jpg" alt="lego the increibles">
+          </div>
+          <div class="info-producto-carrito">
+            <div class="titular-carrito">
+              <h3>LEGO THE INCREDIBLES</h3>
+              <button class="eliminar-producto" data-id="3" aria-label="Borrar producto de carrito">
+                <i class="fas fa-trash-alt"></i>
+              </button>            
+            </div>
+            <div class="cantidad-y-precio-producto">
+              <label class="unidades-a-llevar" for="cantidad">
+                <input type="number" name="cantidad" id="cantidad" min="1" value="1" data-precio="71000">
+              </label>
+              <p class="precio-producto-carrito">$71000</p>
+            </div>          
+          </div>
+        </article>
+
+        <article class="producto-a-comprar ocultar" data-id="4">
+          <div class="contenedor-imagen-carrito">
+            <img src="static/img/mortal kombat.jpg" alt="Mortal Combate 11 - Ultimate">
+          </div>
+          <div class="info-producto-carrito">
+            <div class="titular-carrito">
+              <h3>MORTAL COMBAT</h3>
+              <button class="eliminar-producto" data-id="4" aria-label="Borrar producto de carrito">
+                <i class="fas fa-trash-alt"></i>
+              </button>            
+            </div>
+            <div class="cantidad-y-precio-producto">
+              <label class="unidades-a-llevar" for="cantidad">
+                <input type="number" name="cantidad" id="cantidad" min="1" value="1" data-precio="49000">
+              </label>
+              <p class="precio-producto-carrito">$49000</p>
+            </div>          
+          </div>
+        </article>
+
+        <article class="producto-a-comprar ocultar" data-id="5">
+          <div class="contenedor-imagen-carrito">
+            <img src="static/img/nascar heat 4.jpg" alt="Naskar Heat 4">
+          </div>
+          <div class="info-producto-carrito">
+            <div class="titular-carrito">
+              <h3>NASCAR HEAT 4</h3>
+              <button class="eliminar-producto" data-id="5" aria-label="Borrar producto de carrito">
+                <i class="fas fa-trash-alt"></i>
+              </button>            
+            </div>
+            <div class="cantidad-y-precio-producto">
+              <label class="unidades-a-llevar" for="cantidad">
+                <input type="number" name="cantidad" id="cantidad" min="1" value="1" data-precio="60000">
+              </label>
+              <p class="precio-producto-carrito">$60000</p>
+            </div>          
+          </div>
+        </article>
+
+        <article class="producto-a-comprar ocultar" data-id="6">
+          <div class="contenedor-imagen-carrito">
+            <img src="static/img/remera valorant.jpg" alt="Remera Valorant">
+          </div>
+          <div class="info-producto-carrito">
+            <div class="titular-carrito">
+              <h3>REMERA NEGRA VALORANT</h3>
+              <button class="eliminar-producto" data-id="6" aria-label="Borrar producto de carrito">
+                <i class="fas fa-trash-alt"></i>
+              </button>            
+            </div>
+            <div class="cantidad-y-precio-producto">
+              <label class="unidades-a-llevar" for="cantidad">
+                <input type="number" name="cantidad" id="cantidad" min="1" value="1" data-precio="20000">
+              </label>
+              <p class="precio-producto-carrito">$20000</p>
+            </div>          
+          </div>
+        </article>
+
+        <article class="producto-a-comprar ocultar" data-id="7">
+          <div class="contenedor-imagen-carrito">
+            <img src="static/img/merc.sonic.jpg" alt="mochila de sonic">
+          </div>
+          <div class="info-producto-carrito">
+            <div class="titular-carrito">
+              <h3>MOCHILA DE SONIC</h3>
+              <button class="eliminar-producto" data-id="7" aria-label="Borrar producto de carrito">
+                <i class="fas fa-trash-alt"></i>
+              </button>            
+            </div>
+            <div class="cantidad-y-precio-producto">
+              <label class="unidades-a-llevar" for="cantidad">
+                <input type="number" name="cantidad" id="cantidad" min="1" value="1" data-precio="80000">
+              </label>
+              <p class="precio-producto-carrito">$80000</p>
+            </div>          
+          </div>
+        </article>
+
+        <article class="producto-a-comprar ocultar" data-id="8">
+          <div class="contenedor-imagen-carrito">
+            <img src="static/img/need for speed payback.jpg" alt="Need for Speed">
+          </div>
+          <div class="info-producto-carrito">
+            <div class="titular-carrito">
+              <h3>NEED FOR SPEED PAYBACK</h3>
+              <button class="eliminar-producto" data-id="8" aria-label="Borrar producto de carrito">
+                <i class="fas fa-trash-alt"></i>
+              </button>            
+            </div>
+            <div class="cantidad-y-precio-producto">
+              <label class="unidades-a-llevar" for="cantidad">
+                <input type="number" name="cantidad" id="cantidad" min="1" value="1" data-precio="49000">
+              </label>
+              <p class="precio-producto-carrito">$49000</p>
+            </div>          
+          </div>
+        </article>
+
+        <article class="producto-a-comprar ocultar" data-id="9">
+          <div class="contenedor-imagen-carrito">
+            <img src="static/img/resident evil 4.jpg" alt="resident evil 4">
+          </div>
+          <div class="info-producto-carrito">
+            <div class="titular-carrito">
+              <h3>RESIDENT EVIL 4</h3>
+              <button class="eliminar-producto" data-id="9" aria-label="Borrar producto de carrito">
+                <i class="fas fa-trash-alt"></i>
+              </button>            
+            </div>
+            <div class="cantidad-y-precio-producto">
+              <label class="unidades-a-llevar" for="cantidad">
+                <input type="number" name="cantidad" id="cantidad" min="1" value="1" data-precio="42000">
+              </label>
+              <p class="precio-producto-carrito">$42000</p>
+            </div>          
+          </div>
+        </article>
+
+        <article class="producto-a-comprar ocultar" data-id="10">
+          <div class="contenedor-imagen-carrito">
+            <img src="static/img/procesador ryzen.jpg" alt="procesador ryzen">
+          </div>
+          <div class="info-producto-carrito">
+            <div class="titular-carrito">
+              <h3>PROCESADOR RYZEN</h3>
+              <button class="eliminar-producto" data-id="10" aria-label="Borrar producto de carrito">
+                <i class="fas fa-trash-alt"></i>
+              </button>            
+            </div>
+            <div class="cantidad-y-precio-producto">
+              <label class="unidades-a-llevar" for="cantidad">
+                <input type="number" name="cantidad" id="cantidad" min="1" value="1" data-precio="200000">
+              </label>
+              <p class="precio-producto-carrito">$200000</p>
+            </div>          
+          </div>
+        </article>
+
+        <article class="producto-a-comprar ocultar" data-id="11">
+          <div class="contenedor-imagen-carrito">
+            <img src="static/img/PLACA VIDEO.jpg" alt="placa de video">
+          </div>
+          <div class="info-producto-carrito">
+            <div class="titular-carrito">
+              <h3>PLACA DE VIDEO</h3>
+              <button class="eliminar-producto" data-id="11" aria-label="Borrar producto de carrito">
+                <i class="fas fa-trash-alt"></i>
+              </button>            
+            </div>
+            <div class="cantidad-y-precio-producto">
+              <label class="unidades-a-llevar" for="cantidad">
+                <input type="number" name="cantidad" id="cantidad" min="1" value="1" data-precio="150000">
+              </label>
+              <p class="precio-producto-carrito">$150000</p>
+            </div>          
+          </div>
+        </article>
+
+        <article class="producto-a-comprar ocultar" data-id="12">
+          <div class="contenedor-imagen-carrito">
+            <img src="static/img/remera sonic.jpg" alt="remera sonic">
+          </div>
+          <div class="info-producto-carrito">
+            <div class="titular-carrito">
+              <h3>REMERA DE SONIC</h3>
+              <button class="eliminar-producto" data-id="12" aria-label="Borrar producto de carrito">
+                <i class="fas fa-trash-alt"></i>
+              </button>            
+            </div>
+            <div class="cantidad-y-precio-producto">
+              <label class="unidades-a-llevar" for="cantidad">
+                <input type="number" name="cantidad" id="cantidad" min="1" value="1" data-precio="50000">
+              </label>
+              <p class="precio-producto-carrito">$50000</p>
+            </div>          
+          </div>
+        </article>
+
+        <article class="producto-a-comprar ocultar" data-id="13">
+          <div class="contenedor-imagen-carrito">
+            <img src="static/img/TECLADO.jpg" alt="teclado">
+          </div>
+          <div class="info-producto-carrito">
+            <div class="titular-carrito">
+              <h3>TECLADO</h3>
+              <button class="eliminar-producto" data-id="13" aria-label="Borrar producto de carrito">
+                <i class="fas fa-trash-alt"></i>
+              </button>            
+            </div>
+            <div class="cantidad-y-precio-producto">
+              <label class="unidades-a-llevar" for="cantidad">
+                <input type="number" name="cantidad" id="cantidad" min="1" value="1" data-precio="35000">
+              </label>
+              <p class="precio-producto-carrito">$35000</p>
+            </div>          
+          </div>
+        </article>
+
+        <article class="producto-a-comprar ocultar" data-id="14">
+          <div class="contenedor-imagen-carrito">
+            <img src="static/img/MOUSE.jpg" alt="MOUSE">
+          </div>
+          <div class="info-producto-carrito">
+            <div class="titular-carrito">
+              <h3>MOUSE</h3>
+              <button class="eliminar-producto" data-id="14" aria-label="Borrar producto de carrito">
+                <i class="fas fa-trash-alt"></i>
+              </button>            
+            </div>
+            <div class="cantidad-y-precio-producto">
+              <label class="unidades-a-llevar" for="cantidad">
+                <input type="number" name="cantidad" id="cantidad" min="1" value="1" data-precio="15000">
+              </label>
+              <p class="precio-producto-carrito">$15000</p>
+            </div>          
+          </div>
+        </article>
+
+        <article class="producto-a-comprar ocultar" data-id="15">
+          <div class="contenedor-imagen-carrito">
+            <img src="static/img/MERCH MARIO BROSS.jpg" alt="MERCH MARIO BROSS">
+          </div>
+          <div class="info-producto-carrito">
+            <div class="titular-carrito">
+              <h3>MERCH MARIO BROSS</h3>
+              <button class="eliminar-producto" data-id="15" aria-label="Borrar producto de carrito">
+                <i class="fas fa-trash-alt"></i>
+              </button>            
+            </div>
+            <div class="cantidad-y-precio-producto">
+              <label class="unidades-a-llevar" for="cantidad">
+                <input type="number" name="cantidad" id="cantidad" min="1" value="1" data-precio="15000">
+              </label>
+              <p class="precio-producto-carrito">$15000</p>
+            </div>          
+          </div>
+        </article>
+      </div>
+
+      <p aria-live="assertive">Subtotal <span id="subtotal-en-carrito">$0</span></p>
+    </div>
+
+    <div class="contenedor-botones-carrito ocultar">
+      <button id="boton-comprar-carrito" class="botones-carrito comprar-prod"
+       aria-label="Comprar Productos">COMPRAR</button>
+      <button id="boton-vaciar" class="botones-carrito vaciar-prod"
+       aria-label="Vaciar Carrito">VACIAR</button>
+    </div>
+  </section>
+
+  <!-- PopUp Vaciar Carrito -->
+  <div class="overlay vaciar-carrito-overlay ocultar">
+    <div class="popup-vaciar-carrito" aria-modal="true" role="dialog" aria-labelledby="popup-mensaje">
+      <p id="popup-mensaje">Estás por vaciar el carrito, ¿quieres continuar?</p>
+      <div class="contenedor-botones-vaciar-carrito">
+        <button id="boton-cancelar-vaciar" class="botones-modal cancelar-accion"
+       aria-label="Cancelar vaciar carrito">CANCELAR</button>
+        <button id="boton-confirmar-vaciar" class="botones-modal vaciar-carrito"
+       aria-label="Vaciar Carrito">VACIAR</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PopUp Finalizar Compra -->
+  <div class="overlay finalizar-compra-overlay ocultar">
+    <section class="popup-finalizar-compra" aria-modal="true" 
+    role="dialog" aria-labelledby="finalizar-compra">
+      <h2 id="finalizar-compra">¡Ya casi es tuyo!</h2>
+      <div class="contenedor-informacion-compra">
+        <form method="GET" id="formulario-compra" class="formulario-compra">
+          <fieldset class="contenedor-info-form datos-personales">
+            <legend class="titulos-resumen-compra">Datos personales</legend>
+            <label for="nombre-comprador">
+              Nombre y apellido*
+              <input class="inputs-compra" type="text" name="nombre" aria-label="Nombre y Apellido. Requerido"
+              id="nombre-comprador" placeholder="p. ej.:Ada Lovelace" required />
+            </label>
+            <label for="email">
+              E-mail*
+              <input class="inputs-compra" type="email" name="email" aria-label="Correo electrónico. Requerido"
+              id="email" placeholder="p. ej.:ada.lovelace@gmail.com" required />
+            </label>
+          </fieldset>
+
+          <fieldset class="contenedor-info-form formas-de-pago">
+            <legend class="titulos-resumen-compra">Opciones de pago</legend>
+            <label for="efectivo-debito">
+              <input type="radio" name="metodo-de-pago" id="efectivo-debito" value="efectivo-debito" checked />
+              Efectivo / Débito
+            </label>
+            <label for="tarjeta-credito">
+              <input type="radio" name="metodo-de-pago" id="tarjeta-credito" value="tarjeta-credito" />
+              Tarjeta de crédito
+            </label>
+            <label for="con-envio">
+              <input type="checkbox" name="con-envio" id="con-envio" />
+              Necesito envío
+            </label>
+            <label for="con-descuento">
+              <input type="checkbox" name="con-descuento" id="con-descuento" />
+              Tengo tarjeta de descuento
+            </label>
+          </fieldset>
+        </form>
+
+        <section class="total-a-pagar" aria-labelledby="resumen-de-pago">
+          <h3 id="resumen-de-pago" class="titulos-resumen-compra">Resumen</h3>
+          <div class="contenedor-info-a-pagar">
+            <p class="mensaje-pagar">Subtotal: <span id="subtotal-a-pagar">0</span> </p>
+            <p class="mensaje-pagar tiene-descuento ocultar">Descuento 5%: <span id="valor-descuento">0</span></p>
+            <p class="mensaje-pagar tiene-envio ocultar">Envío: <span id="valor-envio">0</span></p>
+            <p class="mensaje-pagar tiene-recargo ocultar">Recargo: <span id="valor-recargo">0</span></p>
+            <h4 aria-live="assertive">Total: <span id="total-a-pagar">0</span></h4>
+          </div>
+        </section>
+      </div>
+
+      <div class="botones-compra">
+        <button id="boton-seguir-comprando" class="botones-modal cancelar-accion"
+        aria-label="Seguir comprando">SEGUIR COMPRANDO</button>
+        
+        <button id="boton-finalizar-compra" class="botones-modal comprar-prod"
+        aria-label="Finalizar compra" type="submit" form="formulario-compra">FINALIZAR</button>
+      </div>
+    </section>
+  </div>
+
+  <script src="/static/js/main.js"></script>
+</body>
+</html>
